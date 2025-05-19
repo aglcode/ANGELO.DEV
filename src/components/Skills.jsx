@@ -12,15 +12,15 @@ const Skills = () => {
   const skills = [
     {
       category: 'Frontend',
-      items: ['React', 'JavaScript', 'TypeScript', 'HTML5', 'CSS3/SCSS', 'Tailwind CSS', 'Redux']
+      items: ['React', 'JavaScript', 'HTML5', 'CSS3', 'Bootstrap', 'Tailwind CSS']
     },
     {
       category: 'Backend',
-      items: ['Node.js', 'Express', 'REST APIs', 'GraphQL', 'Firebase']
+      items: ['Node.js', 'Express', 'REST APIs', 'MongoDB', 'Firebase', 'MySQL', 'PHP']
     },
     {
-      category: 'Tools & Methods',
-      items: ['Git', 'Webpack', 'Vite', 'Jest', 'Cypress', 'Figma', 'Responsive Design', 'Agile']
+      category: 'Dev & Design Tools',
+      items: ['Git', 'GitHub', 'Vite', 'Figma', 'Wix/Studio', 'VSCode', 'Xampp', 'Cursor']
     }
   ];
 
