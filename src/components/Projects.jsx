@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { FiExternalLink, FiGithub, FiFilter } from 'react-icons/fi';
@@ -10,6 +10,25 @@ const Projects = () => {
   });
 
   const [filter, setFilter] = useState('all');
+  
+  // State to track if we're on mobile
+  const [isMobile, setIsMobile] = useState(false);
+  
+  // Check for mobile on component mount and window resize
+  useEffect(() => {
+    const checkIfMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    // Initial check
+    checkIfMobile();
+    
+    // Add resize listener
+    window.addEventListener('resize', checkIfMobile);
+    
+    // Cleanup
+    return () => window.removeEventListener('resize', checkIfMobile);
+  }, []);
 
   const projects = [
     {
@@ -73,7 +92,11 @@ const Projects = () => {
     : projects.filter(project => project.category === filter);
 
   return (
-    <section id="projects" ref={ref} className="section bg-secondary-50 dark:bg-secondary-800/30">
+    <section 
+      id="projects" 
+      ref={ref} 
+      className={`section ${isMobile ? 'bg-secondary-800/30' : 'bg-secondary-50 dark:bg-secondary-800/30'}`}
+    >
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -81,8 +104,8 @@ const Projects = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h2 className="mb-4 text-secondary-900 dark:text-white">My Projects</h2>
-          <p className="max-w-2xl mx-auto text-secondary-600 dark:text-secondary-300">
+          <h2 className={`mb-4 ${isMobile ? 'text-white' : 'text-secondary-900 dark:text-white'}`}>My Projects</h2>
+          <p className={`max-w-2xl mx-auto ${isMobile ? 'text-secondary-300' : 'text-secondary-600 dark:text-secondary-300'}`}>
             Here's a selection of my recent work. Each project presented unique challenges 
             and opportunities to create something meaningful.
           </p>
@@ -99,7 +122,9 @@ const Projects = () => {
             className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
               filter === 'all'
                 ? 'bg-primary-500 text-white'
-                : 'bg-secondary-100 dark:bg-secondary-700 text-secondary-700 dark:text-secondary-300 hover:bg-secondary-200 dark:hover:bg-secondary-600'
+                : isMobile 
+                  ? 'bg-secondary-700 text-secondary-300 hover:bg-secondary-600' 
+                  : 'bg-secondary-100 dark:bg-secondary-700 text-secondary-700 dark:text-secondary-300 hover:bg-secondary-200 dark:hover:bg-secondary-600'
             }`}
           >
             All
@@ -109,7 +134,9 @@ const Projects = () => {
             className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
               filter === 'web'
                 ? 'bg-primary-500 text-white'
-                : 'bg-secondary-100 dark:bg-secondary-700 text-secondary-700 dark:text-secondary-300 hover:bg-secondary-200 dark:hover:bg-secondary-600'
+                : isMobile 
+                  ? 'bg-secondary-700 text-secondary-300 hover:bg-secondary-600' 
+                  : 'bg-secondary-100 dark:bg-secondary-700 text-secondary-700 dark:text-secondary-300 hover:bg-secondary-200 dark:hover:bg-secondary-600'
             }`}
           >
             Web Apps
@@ -119,7 +146,9 @@ const Projects = () => {
             className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
               filter === 'mobile'
                 ? 'bg-primary-500 text-white'
-                : 'bg-secondary-100 dark:bg-secondary-700 text-secondary-700 dark:text-secondary-300 hover:bg-secondary-200 dark:hover:bg-secondary-600'
+                : isMobile 
+                  ? 'bg-secondary-700 text-secondary-300 hover:bg-secondary-600' 
+                  : 'bg-secondary-100 dark:bg-secondary-700 text-secondary-700 dark:text-secondary-300 hover:bg-secondary-200 dark:hover:bg-secondary-600'
             }`}
           >
             Mobile Apps
@@ -155,13 +184,21 @@ const Projects = () => {
                 </div>
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-bold mb-2 text-secondary-900 dark:text-white">{project.title}</h3>
-                <p className="text-secondary-600 dark:text-secondary-300 mb-4">{project.description}</p>
+                <h3 className={`text-xl font-bold mb-2 ${isMobile ? 'text-white' : 'text-secondary-900 dark:text-white'}`}>
+                  {project.title}
+                </h3>
+                <p className={`${isMobile ? 'text-secondary-300' : 'text-secondary-600 dark:text-secondary-300'} mb-4`}>
+                  {project.description}
+                </p>
                 <div className="flex flex-wrap gap-2 mt-4">
                   {project.technologies.map((tech, techIndex) => (
                     <span 
                       key={techIndex}
-                      className="px-2 py-1 text-xs rounded-full bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400"
+                      className={`px-2 py-1 text-xs rounded-full ${
+                        isMobile 
+                          ? 'bg-primary-900/30 text-primary-400' 
+                          : 'bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400'
+                      }`}
                     >
                       {tech}
                     </span>
