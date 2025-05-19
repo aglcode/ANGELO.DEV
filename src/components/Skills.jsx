@@ -33,7 +33,7 @@ const Skills = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="mb-4 text-secondary-900 dark:text-white">Technical Skills</h2>
+          <h2 className="mb-4 text-white md:text-secondary-900 dark:text-white">Technical Skills</h2>
           <p className="max-w-2xl mx-auto text-secondary-600 dark:text-secondary-300">
             Here are the technologies and tools I use to bring ideas to life
           </p>
