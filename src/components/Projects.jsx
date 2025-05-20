@@ -2,13 +2,13 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { FiExternalLink, FiGithub, FiFilter } from 'react-icons/fi';
-import hms from '../assets/projects/hms.png';
-import realstate from '../assets/projects/realstate.png';
-import wiki from '../assets/projects/wiki.png';
-import xiao from '../assets/projects/xiao.png';
-import videodl from '../assets/projects/youtube.png';
-import design1 from '../assets/projects/design1.png';
-import apple1 from '../assets/projects/apple1.png';
+import hms from '../assets/projects/hms.webp';
+import realstate from '../assets/projects/realstate.webp';
+import wiki from '../assets/projects/wiki.webp';
+import xiao from '../assets/projects/xiao.webp';
+import videodl from '../assets/projects/youtube.webp';
+import design1 from '../assets/projects/design1.webp';
+import apple1 from '../assets/projects/apple1.webp';
 
 const Projects = () => {
   const [ref, inView] = useInView({
@@ -185,6 +185,8 @@ const Projects = () => {
                   src={project.image} 
                   alt={project.title} 
                   loading='lazy'
+                    width={320}
+                    height={400}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-secondary-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
