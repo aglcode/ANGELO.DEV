@@ -84,6 +84,7 @@ const About = () => {
                 <img 
                   src={angelo}
                   alt="Profile" 
+                  loading='lazy'
                   className="w-full h-full object-cover mix-blend-overlay opacity-75"
                 />
               </div>
