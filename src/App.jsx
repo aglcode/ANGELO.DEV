@@ -15,10 +15,10 @@ function App() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="min-h-screen flex flex-col bg-secondary-900"
+      className="min-h-screen flex flex-col bg-secondary-900 relative w-full overflow-hidden"
     >
       <Header />
-      <main className="flex-1">
+      <main className="flex-1 w-full">
         <Hero />
         <About />
         <Skills />

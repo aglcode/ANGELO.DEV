@@ -2,6 +2,13 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { FiExternalLink, FiGithub, FiFilter } from 'react-icons/fi';
+import hms from '../assets/projects/hms.png';
+import realstate from '../assets/projects/realstate.png';
+import wiki from '../assets/projects/wiki.png';
+import xiao from '../assets/projects/xiao.png';
+import videodl from '../assets/projects/youtube.png';
+import design1 from '../assets/projects/design1.png';
+import apple1 from '../assets/projects/apple1.png';
 
 const Projects = () => {
   const [ref, inView] = useInView({
@@ -32,18 +39,9 @@ const Projects = () => {
 
   const projects = [
     {
-      title: 'To-Do List',
-      description: 'Developed a basic To-Do List using ReactJS with JSON server for CRUD operations, enabling users to add, edit, and delete data.',
-      image: 'https://images.pexels.com/photos/5632402/pexels-photo-5632402.jpeg?auto=compress&cs=tinysrgb&w=800',
-      technologies: ['ReactJS', 'Tailwind CSS', 'JSON'],
-      category: 'web',
-      demoUrl: '#',
-      githubUrl: 'https://github.com/aglcode/React-To-Do-List-'
-    },
-    {
       title: 'Youtube Video Downloader',
       description: 'API-based YouTube Video Downloader that allows users to download mp3/mp4 files by uploading links from YouTube, with the option to choose from a variety of high-quality resolutions.',
-      image: 'https://images.pexels.com/photos/4482900/pexels-photo-4482900.jpeg?auto=compress&cs=tinysrgb&w=800',
+      image: videodl,
       technologies: ['HTML', 'CSS', 'JavaScript', 'API'],
       category: 'web',
       demoUrl: '#',
@@ -52,39 +50,57 @@ const Projects = () => {
     {
       title: 'Portfolio Template',
       description: 'A customizable portfolio template for creative professionals with smooth animations and responsive design.',
-      image: 'https://images.pexels.com/photos/5473302/pexels-photo-5473302.jpeg?auto=compress&cs=tinysrgb&w=800',
+      image: xiao,
       technologies: ['HTML', 'CSS', 'JavaScript'],
       category: 'web',
       demoUrl: '#',
       githubUrl: 'https://github.com/aglcode/xiao'
     },
     {
-      title: 'Pending',
+      title: 'Healthcare Management System',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.',
-      image: 'https://images.pexels.com/photos/1431822/pexels-photo-1431822.jpeg?auto=compress&cs=tinysrgb&w=800',
+      image: hms,
       technologies: ['React', 'OpenWeather API', 'TailwindCSS'],
       category: 'web',
       demoUrl: '#',
       githubUrl: '#'
     },
     {
-      title: 'Pending',
+      title: 'Real-Estate Landing Page',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.',
-      image: 'https://images.pexels.com/photos/6893533/pexels-photo-6893533.jpeg?auto=compress&cs=tinysrgb&w=800',
+      image: realstate,
       technologies: ['React', 'Node.js', 'Express.js', 'MongoDB'],
       category: 'web',
       demoUrl: '#',
       githubUrl: '#'
     },
     {
-      title: 'Pending',
+      title: 'Fan WikiPedia',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.',
-      image: 'https://images.pexels.com/photos/2325446/pexels-photo-2325446.jpeg?auto=compress&cs=tinysrgb&w=800',
+      image: wiki,
       technologies: ['React Native', 'Google Maps API', 'GraphQL'],
-      category: 'mobile',
+      category: 'web',
       demoUrl: '#',
       githubUrl: '#'
-    }
+    },
+    {
+      title: 'Minimalist Designer Portfolio',
+      description: 'Developed a basic To-Do List using ReactJS with JSON server for CRUD operations, enabling users to add, edit, and delete data.',
+      image: design1,
+      technologies: ['Figma'],
+      category: 'design',
+      demoUrl: '#',
+      githubUrl: 'https://github.com/aglcode/React-To-Do-List-'
+    },
+        {
+      title: 'Apple Inspired',
+      description: 'Developed a basic To-Do List using ReactJS with JSON server for CRUD operations, enabling users to add, edit, and delete data.',
+      image: apple1,
+      technologies: ['Figma'],
+      category: 'design',
+      demoUrl: '#',
+      githubUrl: 'https://github.com/aglcode/React-To-Do-List-'
+    },
   ];
 
   const filteredProjects = filter === 'all' 
@@ -142,16 +158,16 @@ const Projects = () => {
             Web Apps
           </button>
           <button
-            onClick={() => setFilter('mobile')}
+            onClick={() => setFilter('design')}
             className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
-              filter === 'mobile'
+              filter === 'design'
                 ? 'bg-primary-500 text-white'
                 : isMobile 
                   ? 'bg-secondary-700 text-secondary-300 hover:bg-secondary-600' 
                   : 'bg-secondary-100 dark:bg-secondary-700 text-secondary-700 dark:text-secondary-300 hover:bg-secondary-200 dark:hover:bg-secondary-600'
             }`}
           >
-            Mobile Apps
+            Designs
           </button>
         </motion.div>
 
