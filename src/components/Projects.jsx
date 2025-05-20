@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { FiExternalLink, FiGithub, FiFilter } from 'react-icons/fi';
+import { FiExternalLink, FiGithub, FiX } from 'react-icons/fi';
 import hms from '../assets/projects/hms.webp';
 import realstate from '../assets/projects/realstate.webp';
 import wiki from '../assets/projects/wiki.webp';
@@ -17,6 +17,8 @@ const Projects = () => {
   });
 
   const [filter, setFilter] = useState('all');
+  const [selectedProject, setSelectedProject] = useState(null);
+  const [modalOpen, setModalOpen] = useState(false);
   
   // State to track if we're on mobile
   const [isMobile, setIsMobile] = useState(false);
@@ -36,6 +38,32 @@ const Projects = () => {
     // Cleanup
     return () => window.removeEventListener('resize', checkIfMobile);
   }, []);
+
+  // Close modal when ESC key is pressed
+  useEffect(() => {
+    const handleEsc = (event) => {
+      if (event.keyCode === 27) {
+        setModalOpen(false);
+      }
+    };
+    window.addEventListener('keydown', handleEsc);
+
+    return () => {
+      window.removeEventListener('keydown', handleEsc);
+    };
+  }, []);
+
+  // Prevent body scroll when modal is open
+  useEffect(() => {
+    if (modalOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [modalOpen]);
 
   const projects = [
     {
@@ -92,7 +120,7 @@ const Projects = () => {
       demoUrl: '#',
       githubUrl: 'https://github.com/aglcode/React-To-Do-List-'
     },
-        {
+    {
       title: 'Apple Inspired',
       description: 'Developed a basic To-Do List using ReactJS with JSON server for CRUD operations, enabling users to add, edit, and delete data.',
       image: apple1,
@@ -106,6 +134,16 @@ const Projects = () => {
   const filteredProjects = filter === 'all' 
     ? projects 
     : projects.filter(project => project.category === filter);
+
+  const openModal = (project) => {
+    setSelectedProject(project);
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+    setTimeout(() => setSelectedProject(null), 300); // Clear selection after animation completes
+  };
 
   return (
     <section 
@@ -180,19 +218,27 @@ const Projects = () => {
               transition={{ duration: 0.5, delay: 0.2 + (index * 0.1) }}
               className="card overflow-hidden group"
             >
-              <div className="relative overflow-hidden aspect-video">
+              <div className="relative overflow-hidden aspect-video w-full h-full object-cover">
                 <img 
                   src={project.image} 
                   alt={project.title} 
                   loading='lazy'
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-secondary-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                <div className="absolute inset-0 bg-gradient-to-t from-secondary-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-between p-6">
+                  <div className="text-white">
+                    <h4 className="text-xl font-bold transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+                      {project.title}
+                    </h4>
+                  </div>
                   <div className="text-white space-y-2">
                     <div className="flex gap-3">
-                      <a href={project.demoUrl} className="p-2 rounded-full bg-white/20 hover:bg-white/30 transition-colors">
+                      <button 
+                        onClick={() => openModal(project)}
+                        className="p-2 rounded-full bg-white/20 hover:bg-white/30 transition-colors"
+                      >
                         <FiExternalLink />
-                      </a>
+                      </button>
                       <a href={project.githubUrl} className="p-2 rounded-full bg-white/20 hover:bg-white/30 transition-colors">
                         <FiGithub />
                       </a>
@@ -226,6 +272,78 @@ const Projects = () => {
           ))}
         </div>
       </div>
+
+      {/* Project Modal */}
+      <AnimatePresence>
+        {modalOpen && selectedProject && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-secondary-900/80"
+            onClick={closeModal}
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+              className="bg-white dark:bg-secondary-800 rounded-lg w-full max-w-lg overflow-hidden shadow-xl"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="relative">
+                <img 
+                  src={selectedProject.image} 
+                  alt={selectedProject.title} 
+                  className="w-full aspect-video object-cover"
+                />
+                <button 
+                  onClick={closeModal}
+                  className="absolute top-4 right-4 p-2 rounded-full bg-secondary-900/50 text-white hover:bg-secondary-900/70 transition-colors"
+                >
+                  <FiX size={20} />
+                </button>
+              </div>
+              
+              <div className="p-6">
+                <h2 className="text-2xl font-bold mb-2 text-secondary-900 dark:text-white">
+                  {selectedProject.title}
+                </h2>
+                <p className="text-secondary-600 dark:text-secondary-300 mb-6">
+                  {selectedProject.description}
+                </p>
+                
+                <div>
+                  <h3 className="text-lg font-semibold mb-2 text-secondary-900 dark:text-white">
+                    Technologies
+                  </h3>
+                  <div className="flex flex-wrap gap-2">
+                    {selectedProject.technologies.map((tech, techIndex) => (
+                      <span 
+                        key={techIndex}
+                        className="px-3 py-1 text-sm rounded-full bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+                
+                <div className="mt-8 flex gap-4">
+                  <a 
+                    href={selectedProject.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 px-4 py-2 rounded-md bg-secondary-100 dark:bg-secondary-700 text-secondary-900 dark:text-white hover:bg-secondary-200 dark:hover:bg-secondary-600 transition-colors"
+                  >
+                    <FiGithub /> View Code
+                  </a>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };
