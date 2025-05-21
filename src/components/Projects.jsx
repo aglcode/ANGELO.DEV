@@ -376,9 +376,12 @@ const Projects = () => {
               </div>
               
               <div className="p-6">
-                <h2 className="text-2xl font-bold mb-2 text-secondary-900 dark:text-white">
+                <h2 className={`text-2xl font-bold mb-2 ${isMobile ? 'text-white' : 'text-secondary-900 dark:text-white'}`}>
                   {selectedProject.title}
                 </h2>
+                <p className="text-secondary-600 dark:text-secondary-300 mb-6">
+                  {selectedProject.description}
+                </p>
                 <p className="text-secondary-600 dark:text-secondary-300 mb-6">
                   {selectedProject.description}
                 </p>
