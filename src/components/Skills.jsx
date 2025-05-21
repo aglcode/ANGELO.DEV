@@ -1,7 +1,68 @@
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import { HoverEffect } from './ui/card-hover-effect';
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import useEmblaCarousel from "embla-carousel-react";
+import AutoScroll from "embla-carousel-auto-scroll";
 import { HoverBorderGradient } from './ui/hover-border-gradient';
+
+import {
+  React,
+  JavaScript,
+  HTML5,
+  CSS3,
+  Bootstrap5,
+  TailwindCSS,
+  NodeJs,
+  ExpressJsLight,
+  MongoDB,
+  Firebase,
+  MySQL,
+  PHP,
+  Git,
+  GitHubLight,
+  ViteJS, 
+  Figma,
+  DeveloperIcons,
+  VisualStudioCode,
+  ReactRouter,
+  Netlify2,
+  Render,
+  ChatGPT,
+  ClaudeAI,
+  HuggingFace,
+  NPM,
+  Postman,
+  ShadcnUI  
+} from "developer-icons";
+
+const skills = [
+  { name: "React", icon: <React size={32} /> },
+  { name: "React Router", icon: <ReactRouter size={32} /> },
+  { name: "JavaScript", icon: <JavaScript size={32} /> },
+  { name: "HTML5", icon: <HTML5 size={32} /> },
+  { name: "CSS3", icon: <CSS3 size={32} /> },
+  { name: "Bootstrap 5", icon: <Bootstrap5 size={32} />},
+  { name: "Tailwind CSS", icon: <TailwindCSS size={32} /> },
+  { name: "Node.js", icon: <NodeJs size={32} /> },
+  { name: "Express.js", icon: <ExpressJsLight size={32} /> },
+  { name: "MongoDB", icon: <MongoDB size={32} /> },
+  { name: "Firebase", icon: <Firebase size={32} /> },
+  { name: "MySQL", icon: <MySQL size={32} /> },
+  { name: "PHP", icon: <PHP size={32} /> },
+  { name: "Git", icon: <Git size={32} /> },
+  { name: "GitHub", icon: <GitHubLight size={32} /> },
+  { name: "Netlify", icon: <Netlify2 size={32} /> },
+  { name: "Render", icon: <Render size={32} /> },
+  { name: "ViteJS", icon: <ViteJS size={32} /> },
+  { name: "Figma", icon: <Figma size={32} /> },
+  { name: "Dev Icons", icon: <DeveloperIcons size={32} /> },
+  { name: "VS Code", icon: <VisualStudioCode size={32} /> },
+  { name: "ChatGPT", icon: <ChatGPT size={32} /> },
+  { name: "Claude AI", icon: <ClaudeAI size={32} /> },
+  { name: "H Face", icon: <HuggingFace size={32} /> },
+  { name: "NPM", icon: <NPM size={32} /> },
+  { name: "Postman", icon: <Postman size={32} /> },
+  { name: "Shadcn UI", icon: <ShadcnUI size={32} /> }
+];
 
 const Skills = () => {
   const [ref, inView] = useInView({
@@ -9,20 +70,10 @@ const Skills = () => {
     threshold: 0.1,
   });
 
-  const skills = [
-    {
-      category: 'Frontend',
-      items: ['React', 'JavaScript', 'HTML5', 'CSS3', 'Bootstrap', 'Tailwind CSS']
-    },
-    {
-      category: 'Backend',
-      items: ['Node.js', 'Express', 'REST APIs', 'MongoDB', 'Firebase', 'MySQL', 'PHP']
-    },
-    {
-      category: 'Dev & Design Tools',
-      items: ['Git', 'GitHub', 'Vite', 'Figma', 'Wix/Studio', 'VSCode', 'Xampp', 'Cursor']
-    }
-  ];
+  // Embla Carousel setup (no pause logic)
+  const [emblaRef] = useEmblaCarousel({ loop: true, align: "start" }, [
+    AutoScroll({ playOnInit: true, speed: 2 }),
+  ]);
 
   return (
     <section id="skills" ref={ref} className="section">
@@ -44,7 +95,24 @@ const Skills = () => {
           animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <HoverEffect items={skills} />
+          <div className="relative">
+            <div className="overflow-hidden" ref={emblaRef}>
+              <div className="flex">
+                {skills.map((skill) => (
+                  <div
+                    key={skill.name}
+                    className="embla__slide flex flex-col items-center min-w-[120px] max-w-[140px] rounded-lg p-4 shadow-md mx-2"
+                  >
+                    <div className="mb-2">{skill.icon}</div>
+                    <span className="text-sm text-secondary-200">{skill.name}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            {/* Optional: gradient fade on sides */}
+            <div className="pointer-events-none absolute inset-y-0 left-0 w-12" />
+            <div className="pointer-events-none absolute inset-y-0 right-0 w-12" />
+          </div>
         </motion.div>
 
         <motion.div
@@ -62,11 +130,9 @@ const Skills = () => {
           <HoverBorderGradient
             as="a"
             href="#contact"
-            onClick={(e) => {
+            onClick={e => {
               e.preventDefault();
-              document.querySelector('#contact').scrollIntoView({
-                behavior: 'smooth',
-              });
+              document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
             }}
             className="text-white whitespace-nowrap"
             containerClassName="w-full md:w-auto"

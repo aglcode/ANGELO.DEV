@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { FiExternalLink, FiGithub, FiX } from 'react-icons/fi';
+import { FiExternalLink, FiEye, FiGithub, FiX } from 'react-icons/fi';
+import { HoverBorderGradient } from './ui/hover-border-gradient';
 import hms from '../assets/projects/hms.webp';
 import realstate from '../assets/projects/realstate.webp';
 import wiki from '../assets/projects/wiki.webp';
@@ -9,6 +10,72 @@ import xiao from '../assets/projects/xiao.webp';
 import videodl from '../assets/projects/youtube.webp';
 import design1 from '../assets/projects/design1.webp';
 import apple1 from '../assets/projects/apple1.webp';
+
+// Import developer-icons
+import {
+  React as ReactIcon,
+  JavaScript,
+  HTML5,
+  CSS3,
+  Bootstrap5,
+  TailwindCSS,
+  NodeJs,
+  ExpressJsLight,
+  MongoDB,
+  Firebase,
+  MySQL,
+  PHP,
+  Git,
+  GitHubLight,
+  ViteJS,
+  Figma,
+  ReactRouter,
+  Netlify2,
+  Render,
+  ChatGPT,
+  ClaudeAI,
+  HuggingFace,
+  NPM,
+  Postman,
+  ShadcnUI
+} from "developer-icons";
+
+// Map technology names to icons
+const techIcons = {
+  "React": <ReactIcon size={24} />,
+  "React Router": <ReactRouter size={24} />,
+  "JavaScript": <JavaScript size={24} />,
+  "HTML": <HTML5 size={24} />,
+  "HTML5": <HTML5 size={24} />,
+  "CSS": <CSS3 size={24} />,
+  "CSS3": <CSS3 size={24} />,
+  "Bootstrap 5": <Bootstrap5 size={24} />,
+  "Bootstrap5": <Bootstrap5 size={24} />,
+  "TailwindCSS": <TailwindCSS size={24} />,
+  "Tailwind CSS": <TailwindCSS size={24} />,
+  "Node.js": <NodeJs size={24} />,
+  "NodeJs": <NodeJs size={24} />,
+  "Express.js": <ExpressJsLight size={24} />,
+  "ExpressJs": <ExpressJsLight size={24} />,
+  "MongoDB": <MongoDB size={24} />,
+  "Firebase": <Firebase size={24} />,
+  "MySQL": <MySQL size={24} />,
+  "PHP": <PHP size={24} />,
+  "Git": <Git size={24} />,
+  "GitHub": <GitHubLight size={24} />,
+  "ViteJS": <ViteJS size={24} />,
+  "Figma": <Figma size={24} />,
+  "Netlify": <Netlify2 size={24} />,
+  "Render": <Render size={24} />,
+  "ChatGPT": <ChatGPT size={24} />,
+  "Claude AI": <ClaudeAI size={24} />,
+  "HuggingFace": <HuggingFace size={24} />,
+  "NPM": <NPM size={24} />,
+  "Postman": <Postman size={24} />,
+  "Shadcn UI": <ShadcnUI size={24} />,
+  "ShadcnUI": <ShadcnUI size={24} />,
+  // Add more as needed
+};
 
 const Projects = () => {
   const [ref, inView] = useInView({
@@ -237,7 +304,7 @@ const Projects = () => {
                         onClick={() => openModal(project)}
                         className="p-2 rounded-full bg-white/20 hover:bg-white/30 transition-colors"
                       >
-                        <FiExternalLink />
+                        <FiEye />
                       </button>
                       <a href={project.githubUrl} className="p-2 rounded-full bg-white/20 hover:bg-white/30 transition-colors">
                         <FiGithub />
@@ -261,9 +328,10 @@ const Projects = () => {
                         isMobile 
                           ? 'bg-primary-900/30 text-primary-400' 
                           : 'bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400'
-                      }`}
+                      } flex items-center gap-1`}
                     >
-                      {tech}
+                      {techIcons[tech] && <span>{techIcons[tech]}</span>}
+                      <span>{tech}</span>
                     </span>
                   ))}
                 </div>
@@ -288,7 +356,9 @@ const Projects = () => {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
               transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-              className="bg-white dark:bg-secondary-800 rounded-lg w-full max-w-lg overflow-hidden shadow-xl"
+              className={`rounded-lg w-full max-w-lg overflow-hidden shadow-xl ${
+                isMobile ? 'bg-secondary-900' : 'bg-white dark:bg-secondary-800'
+              }`}
               onClick={(e) => e.stopPropagation()}
             >
               <div className="relative">
@@ -317,14 +387,17 @@ const Projects = () => {
                   <h3 className="text-lg font-semibold mb-2 text-secondary-900 dark:text-white">
                     Technologies
                   </h3>
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-3">
                     {selectedProject.technologies.map((tech, techIndex) => (
-                      <span 
+                  <HoverBorderGradient
                         key={techIndex}
-                        className="px-3 py-1 text-sm rounded-full bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400"
+                        as="div"
+                        className="flex items-center gap-2 px-3 py-1 rounded-ful bg-slate-900"
+                        containerClassName=""
                       >
-                        {tech}
-                      </span>
+                        {techIcons[tech] && <span>{techIcons[tech]}</span>}
+                        <span className="text-sm">{tech}</span>
+                      </HoverBorderGradient>
                     ))}
                   </div>
                 </div>
