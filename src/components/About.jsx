@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { FiCode, FiLayout, FiUsers, FiTrendingUp } from 'react-icons/fi';
-import angelo from '../assets/img/sculptute.png';
+import angelo from '../assets/img/sculpture.webp';
 import { useEffect, useState } from 'react';
 
 const About = () => {
