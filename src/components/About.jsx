@@ -84,7 +84,7 @@ const About = () => {
                   src={angelo}
                   alt="Profile" 
                   loading='lazy'
-                  className="w-full h-full object-cover mix-blend-overlay opacity-75"
+                  className="w-full h-full object-cover opacity-75"
                 />
               </div>
               {/* <div className={`absolute -bottom-6 -right-6 p-6 ${isMobile ? 'bg-secondary-900' : 'bg-white dark:bg-secondary-900'} rounded-2xl shadow-lg`}>
