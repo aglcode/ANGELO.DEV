@@ -12,6 +12,9 @@
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
     "@heroui/alert": "^2.2.19",
+    "@heroui/button": "^2.2.20",
+    "@heroui/dropdown": "^2.3.20",
+    "@heroui/react": "^2.7.9",
     "@heroui/system": "^2.4.15",
     "@heroui/theme": "^2.4.15",
     "class-variance-authority": "^0.7.0",

@@ -22,12 +22,12 @@ function App() {
         <Hero />
         <About />
         <Skills />
+        <Graphs />
         <Projects />
         <Contact />
       </main>
       <Footer />
       <FloatingAlert />
-      {/* <Graphs /> */}
     </motion.div>
   );
 }
