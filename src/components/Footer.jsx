@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { FiHeart } from 'react-icons/fi';
+import { React } from "developer-icons";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -36,7 +37,7 @@ const Footer = () => {
         >
           <p>© {currentYear} Angelo Developer. All rights reserved.</p>
           <p className="mt-4 md:mt-0 flex items-center">
-            Made with ReactJS
+          <span className="ml-1"><React size={20} /></span>
           </p>
         </motion.div>
       </div>

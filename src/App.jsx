@@ -27,7 +27,7 @@ function App() {
       </main>
       <Footer />
       <FloatingAlert />
-      <Graphs />
+      {/* <Graphs /> */}
     </motion.div>
   );
 }

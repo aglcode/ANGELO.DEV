@@ -3,6 +3,7 @@ import { useInView } from "react-intersection-observer";
 import useEmblaCarousel from "embla-carousel-react";
 import AutoScroll from "embla-carousel-auto-scroll";
 import { HoverBorderGradient } from './ui/hover-border-gradient';
+import { useEffect, useCallback } from "react";
 
 import {
   React,
@@ -70,10 +71,32 @@ const Skills = () => {
     threshold: 0.1,
   });
 
-  // Embla Carousel setup (no pause logic)
-  const [emblaRef] = useEmblaCarousel({ loop: true, align: "start" }, [
-    AutoScroll({ playOnInit: true, speed: 2 }),
+  // Embla Carousel setup with explicit AutoScroll options
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: "start" }, [
+    AutoScroll({ playOnInit: true, speed: 2, stopOnInteraction: false, stopOnMouseEnter: false, stopOnFocusIn: false }),
   ]);
+
+  // Function to resume scrolling
+  const resumeAutoScroll = useCallback(() => {
+    if (emblaApi && emblaApi.plugins().autoScroll) {
+      const autoScroll = emblaApi.plugins().autoScroll;
+      autoScroll.play();
+    }
+  }, [emblaApi]);
+
+  // Handle slide click to prevent default and resume scrolling
+  const handleSlideClick = useCallback((e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    resumeAutoScroll();
+  }, [resumeAutoScroll]);
+
+  // Ensure AutoScroll resumes when component is in view
+  useEffect(() => {
+    if (inView && emblaApi && emblaApi.plugins().autoScroll) {
+      emblaApi.plugins().autoScroll.play();
+    }
+  }, [inView, emblaApi]);
 
   return (
     <section id="skills" ref={ref} className="section">
@@ -101,10 +124,11 @@ const Skills = () => {
                 {skills.map((skill) => (
                   <div
                     key={skill.name}
-                    className="embla__slide flex flex-col items-center min-w-[120px] max-w-[140px] rounded-lg p-4 shadow-md mx-2"
+                    className="embla__slide flex flex-col items-center min-w-[120px] max-w-[140px] rounded-lg p-4 shadow-md mx-2 pointer-events-auto"
+                    onClick={handleSlideClick}
                   >
-                    <div className="mb-2">{skill.icon}</div>
-                    <span className="text-sm text-secondary-200">{skill.name}</span>
+                    <div className="mb-2 pointer-events-none">{skill.icon}</div>
+                    <span className="text-sm text-secondary-200 pointer-events-none">{skill.name}</span>
                   </div>
                 ))}
               </div>

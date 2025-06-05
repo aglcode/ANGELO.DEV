@@ -4,7 +4,7 @@ import { Alert } from "@heroui/alert";
 
 const FloatingAlert = () => {
   const title = "Notice:";
-  const description = "Website still in development. Some features and content are pending.";
+  const description = "Website still in development. Some features and content may not work.";
   const color = "warning"; // Always use the same color
 
   return (

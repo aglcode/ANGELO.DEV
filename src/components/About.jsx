@@ -1,8 +1,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { FiCode, FiLayout, FiUsers, FiTrendingUp } from 'react-icons/fi';
-import angelo from '../assets/img/angelo.jpg';
-import almonte from '../assets/img/almonte.jpg';
+import angelo from '../assets/img/sculptute.png';
 import { useEffect, useState } from 'react';
 
 const About = () => {
@@ -88,10 +87,10 @@ const About = () => {
                   className="w-full h-full object-cover mix-blend-overlay opacity-75"
                 />
               </div>
-              <div className={`absolute -bottom-6 -right-6 p-6 ${isMobile ? 'bg-secondary-900' : 'bg-white dark:bg-secondary-900'} rounded-2xl shadow-lg`}>
+              {/* <div className={`absolute -bottom-6 -right-6 p-6 ${isMobile ? 'bg-secondary-900' : 'bg-white dark:bg-secondary-900'} rounded-2xl shadow-lg`}>
                 <p className="font-display font-bold">Angelo L. Almonte</p>
                 <p className={`${isMobile ? 'text-secondary-400' : 'text-secondary-600 dark:text-secondary-400'} text-sm`}>Frontend Developer</p>
-              </div>
+              </div> */}
             </div>
           </motion.div>
 

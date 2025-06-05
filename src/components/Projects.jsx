@@ -74,7 +74,6 @@ const techIcons = {
   "Postman": <Postman size={24} />,
   "Shadcn UI": <ShadcnUI size={24} />,
   "ShadcnUI": <ShadcnUI size={24} />,
-  // Add more as needed
 };
 
 const Projects = () => {
@@ -137,7 +136,7 @@ const Projects = () => {
       title: 'Youtube Video Downloader',
       description: 'API-based YouTube Video Downloader that allows users to download mp3/mp4 files by uploading links from YouTube, with the option to choose from a variety of high-quality resolutions.',
       image: videodl,
-      technologies: ['HTML', 'CSS', 'JavaScript', 'API'],
+      technologies: ['HTML', 'Tailwind CSS', 'JavaScript', 'Express.js', 'React'],
       category: 'web',
       demoUrl: '#',
       githubUrl: 'https://github.com/aglcode/YoutubeVideoDownloader'
@@ -155,7 +154,7 @@ const Projects = () => {
       title: 'Healthcare Management System',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.',
       image: hms,
-      technologies: ['React', 'OpenWeather API', 'TailwindCSS'],
+      technologies: ['HTML', 'CSS', 'Bootstrap 5', 'JavaScript', 'PHP', 'MySQL'],
       category: 'web',
       demoUrl: '#',
       githubUrl: '#'
@@ -164,19 +163,19 @@ const Projects = () => {
       title: 'Real-Estate Landing Page',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.',
       image: realstate,
-      technologies: ['React', 'Node.js', 'Express.js', 'MongoDB'],
+      technologies: ['HTML', 'JavaScript', 'React', 'Tailwind CSS'],
       category: 'web',
       demoUrl: '#',
-      githubUrl: '#'
+      githubUrl: 'https://github.com/aglcode/real-estate-landing-page'
     },
     {
       title: 'Fan WikiPedia',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.',
       image: wiki,
-      technologies: ['React Native', 'Google Maps API', 'GraphQL'],
+      technologies: ['HTML', 'JavaScript', 'React', 'Tailwind CSS'],
       category: 'web',
       demoUrl: '#',
-      githubUrl: '#'
+      githubUrl: 'https://github.com/aglcode/wuwawiki'
     },
     {
       title: 'Minimalist Designer Portfolio',
@@ -185,7 +184,7 @@ const Projects = () => {
       technologies: ['Figma'],
       category: 'design',
       demoUrl: '#',
-      githubUrl: 'https://github.com/aglcode/React-To-Do-List-'
+      gdriveUrl: 'https://drive.google.com/drive/folders/1pxT10UZgJBnWXE1RAoIp661h9sWy3mwL?usp=drive_link'
     },
     {
       title: 'Apple Inspired',
@@ -194,7 +193,7 @@ const Projects = () => {
       technologies: ['Figma'],
       category: 'design',
       demoUrl: '#',
-      githubUrl: 'https://github.com/aglcode/React-To-Do-List-'
+      gdriveUrl: 'https://drive.google.com/drive/folders/1eyxcYkAldh2mZ6LHcKtlPp-31MStFtbV?usp=drive_link'
     },
   ];
 
@@ -306,8 +305,13 @@ const Projects = () => {
                       >
                         <FiEye />
                       </button>
-                      <a href={project.githubUrl} className="p-2 rounded-full bg-white/20 hover:bg-white/30 transition-colors">
-                        <FiGithub />
+                      <a 
+                        href={project.category === 'design' ? project.gdriveUrl : project.githubUrl} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="p-2 rounded-full bg-white/20 hover:bg-white/30 transition-colors"
+                      >
+                        {project.category === 'design' ? <FiExternalLink /> : <FiGithub />}
                       </a>
                     </div>
                   </div>
@@ -388,7 +392,7 @@ const Projects = () => {
                   </h3>
                   <div className="flex flex-wrap gap-3">
                     {selectedProject.technologies.map((tech, techIndex) => (
-                  <HoverBorderGradient
+                      <HoverBorderGradient
                         key={techIndex}
                         as="div"
                         className="flex items-center gap-2 px-3 py-1 rounded-ful bg-slate-900"
@@ -403,12 +407,13 @@ const Projects = () => {
                 
                 <div className="mt-8 flex gap-4">
                   <a 
-                    href={selectedProject.githubUrl}
+                    href={selectedProject.category === 'design' ? selectedProject.gdriveUrl : selectedProject.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 px-4 py-2 rounded-md bg-secondary-100 dark:bg-secondary-700 text-secondary-900 dark:text-white hover:bg-secondary-200 dark:hover:bg-secondary-600 transition-colors"
                   >
-                    <FiGithub /> View Code
+                    {selectedProject.category === 'design' ? <FiExternalLink /> : <FiGithub />}
+                    {selectedProject.category === 'design' ? 'View on Google Drive' : 'View Code'}
                   </a>
                 </div>
               </div>
