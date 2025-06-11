@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -10,6 +11,8 @@ import FloatingAlert from './components/FloatingAlert';
 import Graphs from './components/Graphs';
 
 function App() {
+  const [isContactOpen, setIsContactOpen] = useState(false);
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -17,17 +20,17 @@ function App() {
       transition={{ duration: 0.5 }}
       className="min-h-screen flex flex-col bg-secondary-900 relative w-full overflow-hidden"
     >
-      <Header />
+      <Header onContactClick={() => setIsContactOpen(true)} />
       <main className="flex-1 w-full">
         <Hero />
         <About />
-        <Skills />
+        <Skills onContactClick={() => setIsContactOpen(true)} />
         <Graphs />
         <Projects />
-        <Contact />
       </main>
       <Footer />
       <FloatingAlert />
+      <Contact isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />
     </motion.div>
   );
 }

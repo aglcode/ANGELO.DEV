@@ -67,7 +67,7 @@ const skills = [
   { name: "Appwrite", icon: <Appwrite size={32} /> }
 ];
 
-const Skills = () => {
+const Skills = ({ onContactClick }) => {
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -154,12 +154,8 @@ const Skills = () => {
             </p>
           </div>
           <HoverBorderGradient
-            as="a"
-            href="#contact"
-            onClick={e => {
-              e.preventDefault();
-              document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
-            }}
+            as="button"
+            onClick={onContactClick}
             className="text-white whitespace-nowrap"
             containerClassName="w-full md:w-auto"
           >

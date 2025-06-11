@@ -88,6 +88,7 @@ const Projects = () => {
   const [filter, setFilter] = useState('all');
   const [selectedProject, setSelectedProject] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
+  const [expandedDescriptions, setExpandedDescriptions] = useState({});
   
   // State to track if we're on mobile
   const [isMobile, setIsMobile] = useState(false);
@@ -223,6 +224,21 @@ const Projects = () => {
     setTimeout(() => setSelectedProject(null), 300); // Clear selection after animation completes
   };
 
+  const toggleDescription = (projectIndex) => {
+    setExpandedDescriptions(prev => ({
+      ...prev,
+      [projectIndex]: !prev[projectIndex]
+    }));
+  };
+
+  const truncateDescription = (description) => {
+    const sentences = description.split('.');
+    if (sentences.length > 1) {
+      return sentences[0] + '.';
+    }
+    return description;
+  };
+
   return (
     <section 
       id="projects" 
@@ -333,9 +349,33 @@ const Projects = () => {
                 <h3 className={`text-xl font-bold mb-2 ${isMobile ? 'text-white' : 'text-secondary-900 dark:text-white'}`}>
                   {project.title}
                 </h3>
-                <p className={`${isMobile ? 'text-secondary-300' : 'text-secondary-600 dark:text-secondary-300'} mb-4`}>
-                  {project.description}
-                </p>
+                <div className={`${isMobile ? 'text-secondary-300' : 'text-secondary-600 dark:text-secondary-300'} mb-4`}>
+                  {isMobile && !expandedDescriptions[index] ? (
+                    <>
+                      {truncateDescription(project.description)}
+                      {project.description.split('.').length > 1 && (
+                        <button
+                          onClick={() => toggleDescription(index)}
+                          className="ml-1 text-primary-400 hover:text-primary-300"
+                        >
+                          See more
+                        </button>
+                      )}
+                    </>
+                  ) : (
+                    <>
+                      {project.description}
+                      {isMobile && project.description.split('.').length > 1 && (
+                        <button
+                          onClick={() => toggleDescription(index)}
+                          className="ml-1 text-primary-400 hover:text-primary-300"
+                        >
+                          See less
+                        </button>
+                      )}
+                    </>
+                  )}
+                </div>
                 <div className="flex flex-wrap gap-2 mt-4">
                   {project.technologies.map((tech, techIndex) => (
                     <span 
