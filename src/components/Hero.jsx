@@ -63,12 +63,12 @@ const Hero = () => {
 
             <div className="space-y-6 sm:space-y-8 mt-8 md:mt-0">
               <div className="border-l-2 border-primary-500 pl-4 sm:pl-6">
-                <h3 className="text-lg sm:text-xl font-medium text-white mb-2">Front-End</h3>
-                <p className="text-sm sm:text-base text-secondary-300">I'm a front-end developer who likes building clean and functional websites.</p>
+                <h3 className="text-lg sm:text-xl font-medium text-white mb-2">Web Development / Design</h3>
+                <p className="text-sm sm:text-base text-secondary-300">I focus on creating websites that combine solid development practices with thoughtful design to deliver clean, functional, and engaging user experiences.</p>
               </div>
               <div className="border-l-2 border-primary-500 pl-4 sm:pl-6">
-                <h3 className="text-lg sm:text-xl font-medium text-white mb-2">Web Design</h3>
-                <p className="text-sm sm:text-base text-secondary-300">I'm a web designer who likes creating clean, user-friendly, and visually appealing layouts.</p>
+                <h3 className="text-lg sm:text-xl font-medium text-white mb-2">Graphics Design</h3>
+                <p className="text-sm sm:text-base text-secondary-300">I design visual content like logos, social media assets, and layouts that enhance brand identity and communicate ideas effectively.</p>
               </div>
             </div>
           </div>

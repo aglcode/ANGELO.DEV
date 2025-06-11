@@ -32,7 +32,8 @@ import {
   HuggingFace,
   NPM,
   Postman,
-  ShadcnUI  
+  ShadcnUI,
+  Appwrite  
 } from "developer-icons";
 
 const skills = [
@@ -62,7 +63,8 @@ const skills = [
   { name: "H Face", icon: <HuggingFace size={32} /> },
   { name: "NPM", icon: <NPM size={32} /> },
   { name: "Postman", icon: <Postman size={32} /> },
-  { name: "Shadcn UI", icon: <ShadcnUI size={32} /> }
+  { name: "Shadcn UI", icon: <ShadcnUI size={32} /> },
+  { name: "Appwrite", icon: <Appwrite size={32} /> }
 ];
 
 const Skills = () => {

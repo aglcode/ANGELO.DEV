@@ -232,7 +232,7 @@ const Contact = () => {
                         onChange={handleChange}
                         required
                         className={`w-full px-4 py-3 rounded-lg border ${isMobile ? 'border-secondary-700 bg-secondary-900 text-white' : 'border-secondary-200 dark:border-secondary-700 bg-white dark:bg-secondary-900 text-secondary-900 dark:text-white'} focus:border-primary-500 dark:focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 outline-none transition-colors`}
-                        placeholder="John Doe"
+                        placeholder="Enter your name"
                       />
                     </div>
                     <div>
@@ -247,7 +247,7 @@ const Contact = () => {
                         onChange={handleChange}
                         required
                         className={`w-full px-4 py-3 rounded-lg border ${isMobile ? 'border-secondary-700 bg-secondary-900 text-white' : 'border-secondary-200 dark:border-secondary-700 bg-white dark:bg-secondary-900 text-secondary-900 dark:text-white'} focus:border-primary-500 dark:focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 outline-none transition-colors`}
-                        placeholder="john@example.com"
+                        placeholder="Enter your email"
                       />
                     </div>
                   </div>
@@ -264,7 +264,7 @@ const Contact = () => {
                       onChange={handleChange}
                       required
                       className={`w-full px-4 py-3 rounded-lg border ${isMobile ? 'border-secondary-700 bg-secondary-900 text-white' : 'border-secondary-200 dark:border-secondary-700 bg-white dark:bg-secondary-900 text-secondary-900 dark:text-white'} focus:border-primary-500 dark:focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 outline-none transition-colors`}
-                      placeholder="Project Discussion"
+                      placeholder="State your business"
                     />
                   </div>
 
@@ -280,7 +280,7 @@ const Contact = () => {
                       required
                       rows={5}
                       className={`w-full px-4 py-3 rounded-lg border ${isMobile ? 'border-secondary-700 bg-secondary-900 text-white' : 'border-secondary-200 dark:border-secondary-700 bg-white dark:bg-secondary-900 text-secondary-900 dark:text-white'} focus:border-primary-500 dark:focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 outline-none transition-colors resize-none`}
-                      placeholder="How can I help you?"
+                      placeholder="Leave me a message"
                     />
                   </div>
 

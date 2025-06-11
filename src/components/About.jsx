@@ -67,8 +67,7 @@ const About = () => {
         >
           <h2 className={`mb-4 ${isMobile ? 'text-white' : 'text-secondary-900 dark:text-white'}`}>About Me</h2>
           <p className={`max-w-2xl mx-auto ${isMobile ? 'text-secondary-300' : 'text-secondary-600 dark:text-secondary-300'}`}>
-            I'm a frontend developer with a passion for creating beautiful, functional websites 
-            and applications that deliver exceptional user experiences.
+            I'm an aspiring web developer and designer with a passion for building visually engaging and user-focused websites and applications. I enjoy blending clean design with solid development to create seamless digital experiences, and I also explore graphic design to craft visuals that support and elevate my work.
           </p>
         </motion.div>
 

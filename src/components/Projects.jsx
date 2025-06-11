@@ -10,6 +10,7 @@ import xiao from '../assets/projects/xiao.webp';
 import videodl from '../assets/projects/youtube.webp';
 import design1 from '../assets/projects/design1.webp';
 import apple1 from '../assets/projects/apple1.webp';
+import movo from '../assets/projects/movomock.webp';
 
 // Import developer-icons
 import {
@@ -37,7 +38,8 @@ import {
   HuggingFace,
   NPM,
   Postman,
-  ShadcnUI
+  ShadcnUI,
+  Appwrite
 } from "developer-icons";
 
 // Map technology names to icons
@@ -74,6 +76,7 @@ const techIcons = {
   "Postman": <Postman size={24} />,
   "Shadcn UI": <ShadcnUI size={24} />,
   "ShadcnUI": <ShadcnUI size={24} />,
+  "Appwrite": <Appwrite size={24}/>
 };
 
 const Projects = () => {
@@ -133,6 +136,33 @@ const Projects = () => {
 
   const projects = [
     {
+      title: 'Movie Site',
+      description: 'This is a movie streaming website where users can browse and search a wide selection of movies online. It features a sleek interface and user-friendly design for easy navigation.',
+      image: movo,
+      technologies: ['HTML', 'Tailwind CSS', 'JavaScript', 'React', 'API', 'Appwrite'],
+      category: 'web',
+      demoUrl: '#',
+      githubUrl: 'https://github.com/https://github.com/aglcode/movo.git/YoutubeVideoDownloader'
+    },
+    {
+      title: 'Apple Inspired',
+      description: 'Developed a basic To-Do List using ReactJS with JSON server for CRUD operations, enabling users to add, edit, and delete data.',
+      image: apple1,
+      technologies: ['Figma'],
+      category: 'design',
+      demoUrl: '#',
+      gdriveUrl: 'https://drive.google.com/drive/folders/1eyxcYkAldh2mZ6LHcKtlPp-31MStFtbV?usp=drive_link'
+    },
+        {
+      title: 'Minimalist Designer Portfolio',
+      description: 'Developed a basic To-Do List using ReactJS with JSON server for CRUD operations, enabling users to add, edit, and delete data.',
+      image: design1,
+      technologies: ['Figma'],
+      category: 'design',
+      demoUrl: '#',
+      gdriveUrl: 'https://drive.google.com/drive/folders/1pxT10UZgJBnWXE1RAoIp661h9sWy3mwL?usp=drive_link'
+    },
+    {
       title: 'Youtube Video Downloader',
       description: 'API-based YouTube Video Downloader that allows users to download mp3/mp4 files by uploading links from YouTube, with the option to choose from a variety of high-quality resolutions.',
       image: videodl,
@@ -157,7 +187,7 @@ const Projects = () => {
       technologies: ['HTML', 'CSS', 'Bootstrap 5', 'JavaScript', 'PHP', 'MySQL'],
       category: 'web',
       demoUrl: '#',
-      githubUrl: '#'
+      githubUrl: 'https://github.com/aglcode/HMS.git'
     },
     {
       title: 'Real-Estate Landing Page',
@@ -176,25 +206,7 @@ const Projects = () => {
       category: 'web',
       demoUrl: '#',
       githubUrl: 'https://github.com/aglcode/wuwawiki'
-    },
-    {
-      title: 'Minimalist Designer Portfolio',
-      description: 'Developed a basic To-Do List using ReactJS with JSON server for CRUD operations, enabling users to add, edit, and delete data.',
-      image: design1,
-      technologies: ['Figma'],
-      category: 'design',
-      demoUrl: '#',
-      gdriveUrl: 'https://drive.google.com/drive/folders/1pxT10UZgJBnWXE1RAoIp661h9sWy3mwL?usp=drive_link'
-    },
-    {
-      title: 'Apple Inspired',
-      description: 'Developed a basic To-Do List using ReactJS with JSON server for CRUD operations, enabling users to add, edit, and delete data.',
-      image: apple1,
-      technologies: ['Figma'],
-      category: 'design',
-      demoUrl: '#',
-      gdriveUrl: 'https://drive.google.com/drive/folders/1eyxcYkAldh2mZ6LHcKtlPp-31MStFtbV?usp=drive_link'
-    },
+    }
   ];
 
   const filteredProjects = filter === 'all' 
