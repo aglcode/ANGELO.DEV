@@ -11,6 +11,8 @@ import videodl from '../assets/projects/youtube.webp';
 import design1 from '../assets/projects/design1.webp';
 import apple1 from '../assets/projects/apple1.webp';
 import movo from '../assets/projects/movomock.webp';
+import haerin from '../assets/projects/haerin.webp';
+import ethereal from '../assets/projects/ethereal.webp';
 
 // Import developer-icons
 import {
@@ -144,6 +146,24 @@ const Projects = () => {
       category: 'web',
       demoUrl: '#',
       githubUrl: 'https://github.com/https://github.com/aglcode/movo.git/YoutubeVideoDownloader'
+    },
+    {
+      title: 'K-POP Poster',
+      description: 'I designed this poster to highlight Kang Haerin from NJZ with a bold and mysterious vibe. The deep red tones and layered visuals reflect her elegance and growing influence as a rising K-pop icon.',
+      image: haerin,
+      technologies: ['Figma'],
+      category: 'design',
+      demoUrl: '#',
+      gdriveUrl: 'https://drive.google.com/drive/folders/1U5whLV6koiJMHBguzV3aK-fat2RE90up?usp=sharing'
+    },
+        {
+      title: 'Ethereal',
+      description: 'I made this poster to show the beauty of femininity — soft but strong. The colors and layout are designed to give a calm, graceful feel that’s elegant and modern.',
+      image: ethereal,
+      technologies: ['Figma'],
+      category: 'design',
+      demoUrl: '#',
+      gdriveUrl: 'https://drive.google.com/drive/folders/1U5whLV6koiJMHBguzV3aK-fat2RE90up?usp=sharing'
     },
     {
       title: 'Apple Inspired',
