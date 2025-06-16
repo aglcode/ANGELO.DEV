@@ -16,7 +16,7 @@ const Footer = () => {
             className="mb-6 md:mb-0"
           >
             <span className="text-xl font-display font-bold text-primary-400">
-              Angelo.Dev
+              Angelo A.
             </span>
           </motion.div>
 
@@ -35,7 +35,7 @@ const Footer = () => {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="border-t border-secondary-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center text-secondary-400 text-sm"
         >
-          <p>© {currentYear} Angelo Developer. All rights reserved.</p>
+          <p>© {currentYear} Angelo Almonte. All rights reserved.</p>
           <p className="mt-4 md:mt-0 flex items-center">
           <span className="ml-1"><React size={20} /></span>
           </p>

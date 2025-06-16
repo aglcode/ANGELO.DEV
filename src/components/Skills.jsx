@@ -74,8 +74,19 @@ const Skills = ({ onContactClick }) => {
   });
 
   // Embla Carousel setup with explicit AutoScroll options
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: "start" }, [
-    AutoScroll({ playOnInit: true, speed: 2, stopOnInteraction: false, stopOnMouseEnter: false, stopOnFocusIn: false }),
+  const [emblaRef, emblaApi] = useEmblaCarousel({ 
+    loop: true, 
+    align: "start",
+    dragFree: true,
+    containScroll: "trimSnaps"
+  }, [
+    AutoScroll({ 
+      playOnInit: true, 
+      speed: 2, 
+      stopOnInteraction: false, 
+      stopOnMouseEnter: false, 
+      stopOnFocusIn: false 
+    }),
   ]);
 
   // Function to resume scrolling
@@ -121,12 +132,12 @@ const Skills = ({ onContactClick }) => {
           transition={{ duration: 0.6, delay: 0.2 }}
         >
           <div className="relative">
-            <div className="overflow-hidden" ref={emblaRef}>
+            <div className="overflow-hidden cursor-pointer" ref={emblaRef}>
               <div className="flex">
                 {skills.map((skill) => (
                   <div
                     key={skill.name}
-                    className="embla__slide flex flex-col items-center min-w-[120px] max-w-[140px] rounded-lg p-4 shadow-md mx-2 pointer-events-auto"
+                    className="embla__slide flex flex-col items-center min-w-[120px] max-w-[140px] rounded-lg p-4 shadow-md mx-2 pointer-events-auto will-change-transform"
                     onClick={handleSlideClick}
                   >
                     <div className="mb-2 pointer-events-none">{skill.icon}</div>

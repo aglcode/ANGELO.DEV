@@ -9,6 +9,7 @@ import Footer from './components/Footer';
 import { motion } from 'framer-motion';
 import FloatingAlert from './components/FloatingAlert';
 import Graphs from './components/Graphs';
+import { BackToTop } from './components/ui/back-to-top';
 
 function App() {
   const [isContactOpen, setIsContactOpen] = useState(false);
@@ -29,8 +30,9 @@ function App() {
         <Projects />
       </main>
       <Footer />
-      <FloatingAlert />
+      {/* <FloatingAlert /> */}
       <Contact isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />
+      <BackToTop />
     </motion.div>
   );
 }

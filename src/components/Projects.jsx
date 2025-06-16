@@ -13,6 +13,7 @@ import apple1 from '../assets/projects/apple1.webp';
 import movo from '../assets/projects/movomock.webp';
 import haerin from '../assets/projects/haerin.webp';
 import ethereal from '../assets/projects/ethereal.webp';
+import visual from '../assets/projects/visual memoir.webp';
 
 // Import developer-icons
 import {
@@ -154,7 +155,7 @@ const Projects = () => {
       technologies: ['Figma'],
       category: 'design',
       demoUrl: '#',
-      gdriveUrl: 'https://drive.google.com/drive/folders/1U5whLV6koiJMHBguzV3aK-fat2RE90up?usp=sharing'
+      gdriveUrl: 'https://drive.google.com/file/d/1yT4QPUA2fzz9xapi8IIE5GibOk1VWvI7/view?usp=sharing'
     },
         {
       title: 'Ethereal',
@@ -163,11 +164,20 @@ const Projects = () => {
       technologies: ['Figma'],
       category: 'design',
       demoUrl: '#',
-      gdriveUrl: 'https://drive.google.com/drive/folders/1U5whLV6koiJMHBguzV3aK-fat2RE90up?usp=sharing'
+      gdriveUrl: 'https://drive.google.com/file/d/1smp9U_hPaYQvhXDZsXMj-JYtEI7P31S7/view?usp=sharing'
+    },
+    {
+      title: 'Visual Memoir',
+      description: 'I designed this poster to give off a retro-futuristic vibe with bold colors and a mysterious look. It mixes modern typography and vintage tones to feel like a visual memory something artistic, moody, and experimental.',
+      image: visual,
+      technologies: ['Figma'],
+      category: 'design',
+      demoUrl: '#',
+      gdriveUrl: 'https://drive.google.com/file/d/18LQONj0V00VwfoXpFfiAbgNjcLNRmbpu/view?usp=sharing'
     },
     {
       title: 'Apple Inspired',
-      description: 'Developed a basic To-Do List using ReactJS with JSON server for CRUD operations, enabling users to add, edit, and delete data.',
+      description: 'This is a branding website inspired by Apple. I made it just to learn how to use gradient colors.',
       image: apple1,
       technologies: ['Figma'],
       category: 'design',
@@ -176,7 +186,7 @@ const Projects = () => {
     },
         {
       title: 'Minimalist Designer Portfolio',
-      description: 'Developed a basic To-Do List using ReactJS with JSON server for CRUD operations, enabling users to add, edit, and delete data.',
+      description: 'This is a minimalist portfolio I designed with a premium feel. The simple layout and clean colors make it look neat and easy to browse.',
       image: design1,
       technologies: ['Figma'],
       category: 'design',
@@ -203,7 +213,7 @@ const Projects = () => {
     },
     {
       title: 'Healthcare Management System',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.',
+      description: 'This healthcare system handles referrals, bookings, and patient record tracking. It helps patients connect with doctors faster, without needing to go to the clinic.',
       image: hms,
       technologies: ['HTML', 'CSS', 'Bootstrap 5', 'JavaScript', 'PHP', 'MySQL'],
       category: 'web',
@@ -212,7 +222,7 @@ const Projects = () => {
     },
     {
       title: 'Real-Estate Landing Page',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.',
+      description: 'This is a business landing page designed for real estate owners, featuring a premium and professional look.',
       image: realstate,
       technologies: ['HTML', 'JavaScript', 'React', 'Tailwind CSS'],
       category: 'web',
@@ -221,7 +231,7 @@ const Projects = () => {
     },
     {
       title: 'Fan WikiPedia',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.',
+      description: 'This is a fan-based Wikipedia-style website that can serve as a hub for content about anime, movies, or video games.',
       image: wiki,
       technologies: ['HTML', 'JavaScript', 'React', 'Tailwind CSS'],
       category: 'web',
